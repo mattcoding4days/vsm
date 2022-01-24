@@ -11,6 +11,9 @@ from pathlib import Path
 from vsm import Config
 from vsm.log import Log
 
+# 3rd party
+from result import Ok, Err, Result
+
 
 class EnvironmentManager:
     """
@@ -27,11 +30,11 @@ class EnvironmentManager:
         session_dir = Path()
         try:
             if os.environ[Config.vsm_env_var()]:
-                # if Environment variable exists, return this as the users desired storage
-                # location for their session files
+                # if Environment variable exists, the user has the acumen
                 session_dir = Path(os.environ[Config.vsm_env_var()])
         except KeyError:
-            # the user has not bothered defining the VIM_SESSION env variable so use the default storage location
+            # the user does NOT have the acumen, as they havn't bothered defining the VIM_SESSIONS env var,
+            # so we fallback to the default
             session_dir = Config.default_sessions_directory()
             Log.warn(
                 f"{Config.vsm_env_var()} was not found on the system, defaulting to {session_dir} as a session file storage location")
@@ -53,7 +56,7 @@ class ShellManager:
     def __init__(self):
         self.__user_shell = str(os.getenv("SHELL"))
 
-    def execute(self, command: str):
+    def execute(self, command: str) -> Result[bool, str]:
         """
         @description: Execute a shell command
 
@@ -63,7 +66,9 @@ class ShellManager:
             sp.run(command, check=False, shell=True,
                    executable=self.__user_shell)
         except sp.CalledProcessError as error:
-            Log.error(str(error))
+            return Err(str(error))
+
+        return Ok(True)
 
     def is_installed(self, command: str) -> bool:
         """
