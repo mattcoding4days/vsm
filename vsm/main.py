@@ -3,6 +3,7 @@ Main file
 """
 
 # standard lib
+import sys
 
 # package
 from vsm import Config
@@ -18,13 +19,14 @@ def main():
         Log.info("list sessions command called")
 
     elif cli.args.remove_session:
-        Log.info("remove session command called")
+        Log.info(f"remove session command called: {cli.args.remove_session}")
 
     elif cli.args.load_session:
-        Log.info("load session command called")
+        Log.info(f"load session command called: {cli.args.load_session}")
 
     else:
-        Log.error(f"No arguments give, please use {Config.package()} --help for usage information")
+        Log.error(f"No arguments give, please use `{Config.package()} --help` for usage information")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

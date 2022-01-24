@@ -19,9 +19,6 @@ class Cli(metaclass=ThreadSafeMeta):
         parser.add_argument("-rm", "--remove-session", help="remove a vim session file by name", type=str)
         parser.add_argument("-load", "--load-session", help="load a vim session file by name", type=str)
 
-
-
-        # add more arguments here
         self.__args = parser.parse_args()
 
     @property
