@@ -7,6 +7,7 @@ import sys
 
 from vsm import Config
 
+
 def stub_gen() -> None:
     """
     Generate all function stubs
@@ -28,7 +29,7 @@ def run_analyzer() -> None:
     """
     Run the mypy static type checking analyzer
     """
-    path = str(Config.base_dir() / 'src' / f'{Config.package()}')
+    path = str(Config.base_dir() / f'{Config.package()}')
     try:
         sp.run(f'mypy {path}', check=True, shell=True)
     except sp.CalledProcessError as error:
