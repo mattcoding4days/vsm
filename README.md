@@ -34,7 +34,7 @@
 
 ## :package: 3rd party libraries
 
-> Vim Session Manager uses the following Python libraryes
+> Vim Session Manager uses the following Python libraries
 
 1. [result](https://github.com/rustedpy/result)
 
