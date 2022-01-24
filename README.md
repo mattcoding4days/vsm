@@ -1,10 +1,13 @@
 <div align="center">
   <h1>Vim Session Manager</h1>
+  <p>A manager for the under-utilized `mksession` command in vim</p>
   <img alt="GitHub issues" src="https://img.shields.io/github/issues/mattcoding4days/vsm?color=red&logo=github&style=for-the-badge">
+  <img alt="GitHub" src="https://img.shields.io/github/license/mattcoding4days/vsm?color=green&logo=github&style=for-the-badge">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/mattcoding4days/vsm?color=blue&logo=github&style=for-the-badge">
+  <img alt="GitHub forks" src="https://img.shields.io/github/forks/mattcoding4days/vsm?logo=github&style=for-the-badge">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/mattcoding4days/vsm?color=orange&logo=github&style=for-the-badge">
+  <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/mattcoding4days/vsm?label=Source%20Lines%20of%20code&logo=github&style=for-the-badge">
 </div>
-
-
-> A manager for the under-utilized `:mksession` command in vim
 
 ## :information_source: Reasoning
 
