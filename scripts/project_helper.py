@@ -14,7 +14,7 @@ def stub_gen() -> None:
     for the package
     """
     out_file = f"src/{Config.package()}-stubs"
-    path = str(Config.base_dir() / 'src' / f'{Config.package()}')
+    path = str(Config.base_dir() / f'{Config.package()}')
     try:
         sp.run(f'stubgen -p {Config.package()} -o {out_file}',
                check=True,
