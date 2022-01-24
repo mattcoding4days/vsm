@@ -6,7 +6,7 @@ Main file
 
 # package
 from vsm import Config
-from vsm.command_line import Cli
+from vsm.cli import Cli
 from vsm.log import Log
 
 
