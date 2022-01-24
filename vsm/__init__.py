@@ -47,7 +47,7 @@ class Config(metaclass=ThreadSafeMeta):
     __version = "0.1.0"
     __package: str = __package__
     __base_dir = Path(__file__).resolve(strict=True).parent.parent.parent
-    __session_dir = Path().home() / '.config' / __package
+    __config_dir = Path.home() / ".config" / __package
 
     @classmethod
     def version(cls) -> str:
@@ -71,8 +71,8 @@ class Config(metaclass=ThreadSafeMeta):
         return cls.__base_dir
 
     @classmethod
-    def session_dir(cls) -> Path:
+    def config_dir(cls) -> Path:
         """
         @description: getter for the session dir
         """
-        return cls.__session_dir
+        return cls.__config_dir

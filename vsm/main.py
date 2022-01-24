@@ -18,4 +18,4 @@ def run() -> None:
     print(f"Pacakge: {Config.package()}")
     print(f"Version: {Config.version()}")
     print(f"Base dir: {Config.base_dir()}")
-    print(f"Session dir: {Config.session_dir()}")
+    print(f"Config dir: {Config.config_dir()}")
