@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "kickstart"
+version = "1.0.0"
+description = "Poetry project set up and ready to go"
+authors = ["Matt Williams <mattltf@pm.me>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+colorlog = "^4.7.2"
+colorama = "^0.4.4"
+python-dotenv = "^0.17.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+mypy = "^0.812"
+jedi = "^0.18.0"
+isort = "^5.7.0"
+pylint = "^2.7.2"
+autopep8 = "^1.5.7"
+
+[tool.poetry.scripts]
+drive = "kickstart.main:run"
+tests = "scripts.project_helper:run_tests"
+stubs = "scripts.project_helper:stub_gen"
+analyze = "scripts.project_helper:run_analyzer"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+
+build-backend = "poetry.core.masonry.api"
