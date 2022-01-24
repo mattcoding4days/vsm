@@ -9,16 +9,22 @@ from vsm import Config
 from vsm.cli import Cli
 from vsm.log import Log
 
-
-def run() -> None:
+def main():
     """
-    Example function to execute through poetry scripts
+    @description executor function
     """
     cli = Cli()
-    if cli.args.run:
-        Log.info(f"-r was passed")
+    if cli.args.list_sessions:
+        Log.info("list sessions command called")
 
-    Log.info(f"Pacakge: {Config.package()}")
-    Log.info(f"Version: {Config.version()}")
-    Log.info(f"Base dir: {Config.base_dir()}")
-    Log.info(f"Config dir: {Config.config_dir()}")
+    elif cli.args.remove_session:
+        Log.info("remove session command called")
+
+    elif cli.args.load_session:
+        Log.info("load session command called")
+
+    else:
+        Log.error(f"No arguments give, please use {Config.package()} --help for usage information")
+
+if __name__ == "__main__":
+    main()

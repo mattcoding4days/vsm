@@ -9,18 +9,24 @@ class Cli(metaclass=ThreadSafeMeta):
      """
 
     def __init__(self):
-        self.__parser = argparse.ArgumentParser(
+        parser = argparse.ArgumentParser(
             prog="vsm",
             usage="%(prog)s [options]",
-            description="Vim Session Manager",
+            description="A small python program for easily loading/viewing and removing vim sessions",
             allow_abbrev=False,
         )
-        self.__parser.add_argument(
-            "-r",
-            "--run",
-            action="store_true"
-        )
-        
+        parser.add_argument("-ls", "--list-sessions", help="show all vim session files in VIM_SESSIONS directory", action="store_true")
+        parser.add_argument("-rm", "--remove-session", help="remove a vim session file by name", type=str)
+        parser.add_argument("-load", "--load-session", help="load a vim session file by name", type=str)
+
+
 
         # add more arguments here
-        self.args = self.__parser.parse_args()
+        self.__args = parser.parse_args()
+
+    @property
+    def args(self) -> argparse.Namespace:
+        """
+        @description: Return the argparse object
+        """
+        return self.__args
