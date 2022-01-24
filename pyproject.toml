@@ -6,7 +6,8 @@ authors = ["Matt Williams <matt.k.williams@protonmail.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.10.1"
-colorama = "^0.4.4"
+rich = "^11.0.0"
+halo = "^0.0.31"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
