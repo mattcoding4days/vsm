@@ -28,7 +28,7 @@
   * [x] List all sessions
   * [ ] Show programmer statistics for each session
 
-## :construction_worker: Development (for the contribution driven opensourcer)
+## :construction_worker: Development (for the contribution driven opensourcerer)
 
 > The project is managed by [Python Poetry](https://python-poetry.org/) and uses python >= 3.10.1.
 > Note: mypy static analyzing currently will not work as it does not yet support the match statement
