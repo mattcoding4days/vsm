@@ -19,10 +19,19 @@
 > enter `vsm` (Vim Session Manager), it is a script I wrote years ago that has been kicking about my dotfiles, and now is being revamped
 > and written as an easily installable python package as some of my compatriots have expressed interest in using it.
 
+### :superhero_man: Features
+
+#### Current planned features
+
+  * [x] Open session by name (regex filtered)
+  * [x] Remove session by name (regex filtered)
+  * [x] List all sessions
+  * [ ] Show programmer statistics for each session
+
 ## :construction_worker: Development (for the contribution driven opensourcer)
 
-> The project is managed by [Python Poetry](https://python-poetry.org/),
-> and uses python3 >= 3.10.1
+> The project is managed by [Python Poetry](https://python-poetry.org/) and uses python >= 3.10.1.
+> Note: mypy static analyzing currently will not work as it does not yet support the match statement
 
 ### :keyboard: Commands to help you out
 
@@ -42,8 +51,17 @@
 
 > Vim Session Manager uses the following Python libraries
 
-1. [result](https://github.com/rustedpy/result)
+1. [result for Rust like elegance](https://github.com/rustedpy/result)
 
-2. [halo](https://github.com/manrajgrover/halo)
+2. [halo fancy spinner library](https://github.com/manrajgrover/halo)
 
-3. [rich](https://github.com/Textualize/rich)
+3. [rich, make terminal programs great again](https://github.com/Textualize/rich)
+
+## :scroll: Documentation
+
+> To be completed
+
+
+## :mage: Contributing
+
+> To be completed
