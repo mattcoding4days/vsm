@@ -1,9 +1,12 @@
-# Vim Session Manager
+<div align="center">
+  <h1>Vim Session Manager</h1>
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/mattcoding4days/vsm?color=red&logo=github&style=for-the-badge">
+</div>
+
 
 > A manager for the under-utilized `:mksession` command in vim
 
-
-## Reasoning
+## :information_source: Reasoning
 
 > If you use vim or neovim on a daily basis and work in large codebases, it is probably not uncommon for you
 > to have 10+ tabs open at a time, with various splits. Once you close this vim session the layout is lost to the ethers.

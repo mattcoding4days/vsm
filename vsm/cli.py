@@ -12,7 +12,7 @@ class Cli(metaclass=ThreadSafeMeta):
         self.__parser = argparse.ArgumentParser(
             prog="vsm",
             usage="%(prog)s [options]",
-            description="Example package",
+            description="Vim Session Manager",
             allow_abbrev=False,
         )
         self.__parser.add_argument(
@@ -20,6 +20,7 @@ class Cli(metaclass=ThreadSafeMeta):
             "--run",
             action="store_true"
         )
+        
 
         # add more arguments here
         self.args = self.__parser.parse_args()
