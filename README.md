@@ -44,8 +44,12 @@
 #### Run the executable
 `poetry run drive`
 
-#### You can pass commands to executable
-`poetry run drive -r`
+#### You can pass command line arguments to executable through poetry
+
+`poetry run drive --help`
+`poetry run drive --open-session <session>`
+`poetry run drive --remove-session <session>`
+`poetry run drive --the-current-state-of-things`
 
 ## :package: 3rd party libraries
 
