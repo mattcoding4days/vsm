@@ -19,7 +19,7 @@ from result import Ok, Err
 
 def main() -> int:
     """
-    @description: executor function
+    @description: main program logic
 
     @retuns: exit status
     """
@@ -53,9 +53,10 @@ def main() -> int:
         match vsm.open_session(session):
             case Ok(value):
                 Log.info(f"Loading session -> {value}")
+                # BUG: I am arrogantly assuming the user is using neovim.
+                # the initializer class feature needs to determine which vim variant
+                # if any is installed, and store that in a variable.
                 match shell.execute(f"nvim -S {value}"):
-                    case Ok(_):
-                        return 0
                     case Err(fail):
                         Log.error(fail)
                         return 1

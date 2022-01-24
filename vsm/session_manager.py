@@ -83,10 +83,7 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         @param: session, the name of the session file the user wants
         """
         matches: List[Path] = self.__match_session(session)
-        matched_result: Result[Path, str] = self.__validate_one(
-            matches, session)
-
-        return matched_result
+        return self.__validate_one(matches, session)
 
     def list_sessions(self) -> None:
         """

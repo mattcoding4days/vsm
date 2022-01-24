@@ -12,9 +12,6 @@ correctly
 """
 # pylint: disable=W0621, E1101, C0103, W0612
 
-# standard lib
-import sys
-
 # third party
 import pytest
 
@@ -25,9 +22,8 @@ import vsm
 
 
 @pytest.fixture()
-def pkg_test() -> None:
+def pkg_test():
     """
     test version
     """
     yield vsm
-

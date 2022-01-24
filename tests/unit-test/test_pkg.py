@@ -20,3 +20,4 @@ def test_package_name():
     testing version from importing it
     """
     assert Config.package() == 'vsm'
+
