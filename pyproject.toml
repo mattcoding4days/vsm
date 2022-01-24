@@ -8,6 +8,7 @@ authors = ["Matt Williams <matt.k.williams@protonmail.me>"]
 python = "^3.10.1"
 rich = "^11.0.0"
 halo = "^0.0.31"
+result = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

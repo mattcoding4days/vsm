@@ -44,10 +44,12 @@ class Config(metaclass=ThreadSafeMeta):
      only once into this object, this object can be used through-out
      the code base
     """
-    __version = "0.1.0"
+    __version: str = "0.1.0"
     __package: str = __package__
-    __base_dir = Path(__file__).resolve(strict=True).parent.parent.parent
-    __config_dir = Path.home() / ".config" / __package
+    __base_dir: Path = Path(__file__).resolve(strict=True).parent.parent.parent
+    __config_dir: Path = Path.home() / ".config" / __package
+    __vsm_env_var: str = "VIM_SESSIONS"
+    __default_sessions_directory: Path = Path.home() / ".config" / "vim_sessions"
 
     @classmethod
     def version(cls) -> str:
@@ -76,3 +78,17 @@ class Config(metaclass=ThreadSafeMeta):
         @description: getter for the session dir
         """
         return cls.__config_dir
+
+    @classmethod
+    def vsm_env_var(cls) -> str:
+        """
+        @description: Get the environment variable name
+        """
+        return cls.__vsm_env_var
+
+    @classmethod
+    def default_sessions_directory(cls) -> Path:
+        """
+        @description: Get the default sessions directory
+        """
+        return cls.__default_sessions_directory
