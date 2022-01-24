@@ -2,18 +2,14 @@
 Package wide configurations
 """
 from pathlib import Path
-import sys
 from threading import Lock
 from typing import Any, Dict
-
-from dotenv import dotenv_values
 
 
 class ThreadSafeMeta(type):
     """
     This is a thread-safe implementation of Singleton.
     """
-
     _instances: Dict[Any, Any] = {}
 
     _lock: Lock = Lock()
@@ -48,19 +44,10 @@ class Config(metaclass=ThreadSafeMeta):
      only once into this object, this object can be used through-out
      the code base
     """
-    try:
-        __config: Dict[str, Any] = dotenv_values('.env')
-        __version = "1.0.0"
-        __package: str = __package__
-        __base_dir = Path(__file__).resolve(
-            strict=True).parent.parent.parent
-        __logfile_name = f'{__package}-{__version}.log'
-        __config_dir = Path().home() / '.config' / __package
-        __default_env = 'dev'
-        __env = str(__config["APP_ENV"])
-    except KeyError as error:
-        sys.stderr.write(f"Dotenv config error: {error} is missing\n")
-        sys.exit(1)
+    __version = "0.1.0"
+    __package: str = __package__
+    __base_dir = Path(__file__).resolve(strict=True).parent.parent.parent
+    __session_dir = Path().home() / '.config' / __package
 
     @classmethod
     def version(cls) -> str:
@@ -84,29 +71,8 @@ class Config(metaclass=ThreadSafeMeta):
         return cls.__base_dir
 
     @classmethod
-    def logfile_name(cls) -> str:
+    def session_dir(cls) -> Path:
         """
-        @description: getter for the logging file name
+        @description: getter for the session dir
         """
-        return cls.__logfile_name
-
-    @classmethod
-    def config_dir(cls) -> Path:
-        """
-        @description: getter for config directory
-        """
-        return cls.__config_dir
-
-    @classmethod
-    def default_env(cls) -> str:
-        """
-        @description: getter for the default env
-        """
-        return cls.__default_env
-
-    @classmethod
-    def env(cls) -> str:
-        """
-        @description: getter for config
-        """
-        return cls.__env
+        return cls.__session_dir

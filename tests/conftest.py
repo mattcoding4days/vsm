@@ -19,7 +19,7 @@ import sys
 import pytest
 
 # package
-import kickstart as ks
+import vsm
 
 # noinspection PyCallByClass
 
@@ -29,10 +29,5 @@ def pkg_test() -> None:
     """
     test version
     """
-    # Setup code
-    sys.stdout.write('\nRunning setup code for module\n')
+    yield vsm
 
-    yield ks
-
-    # tear down code
-    sys.stdout.write('Running Teardown code for module\n')

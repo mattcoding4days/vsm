@@ -1,20 +1,16 @@
-"""
-command line arguments for this app
-"""
-
 import argparse
 
-from kickstart import ThreadSafeMeta
+from vsm import ThreadSafeMeta
 
 
 class Cli(metaclass=ThreadSafeMeta):
     """
-    @description: App specific aruments go here
-    """
+     @description: App specific aruments go here
+     """
 
     def __init__(self):
         self.__parser = argparse.ArgumentParser(
-            prog="kickstart",
+            prog="vsm",
             usage="%(prog)s [options]",
             description="Example package",
             allow_abbrev=False,
