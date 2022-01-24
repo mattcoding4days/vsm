@@ -42,6 +42,7 @@ class EnvironmentManager:
         if not session_dir.is_dir():
             # TODO: A prompt library should be implemented here to verify if they user wants
             # to use the default location
+            # Feature flag
             Log.warn(f"{session_dir} does not exist, so I am creating it..")
             session_dir.mkdir(parents=True)
 

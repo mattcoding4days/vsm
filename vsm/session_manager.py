@@ -68,6 +68,7 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
 
         # regex matched more than one session, so we don't know which one to load.
         # TODO: add a feature which allows the user to select from the ambiguos sessions
+        # Feature Flag
         if len(valid_matches) > 1:
             for match in valid_matches:
                 Log.warn(f"Found: {match}")
@@ -92,6 +93,10 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         @description: called when used passes the -l command line parameter,
         prints out all session files
         """
+        # TODO: Just printing out the session files on new lines is pretty lame,
+        # the rich python library could be used to display the files and information
+        # about the files in a tabular format.
+        # Feature Flag
         if not self.__all_sessions:
             Log.warn("No session files found, you better get to work")
         else:
@@ -102,6 +107,10 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         """
         @description: called when used passes the -r command line parameter,
         removes the session file if it exists
+
+        @param: session, the name of the session file the user wants to delete
+
+        @return Result[Ok(Path), Err(str)]
         """
         return self.__fetch(session)
 
@@ -111,6 +120,8 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         opens the specified session file, if it exists
 
         @param: session, the name of the session file the user wants to load
+
+        @return Result[Ok(Path), Err(str)]
         """
         return self.__fetch(session)
 
@@ -118,4 +129,9 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         """
         @description: called when used passes the --the_current_state_of_things
         """
+        # TODO: This could be quite a robust feature, show information about vsm,
+        # version, user name, distro type/name. Show statistical information about vim session files,
+        # like how long the user had the file open (how long they were working on the project), last time
+        # the file was opened etcetra. This could be shown in a pretty tabluar colored format using the rich python library.
+        # Feature flag
         ...
