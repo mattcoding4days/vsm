@@ -19,7 +19,7 @@
 > enter `vsm` (Vim Session Manager), it is a script I wrote years ago that has been kicking about my dotfiles, and now is being revamped
 > and written as an easily installable python package as some of my compatriots have expressed interest in using it.
 
-### :superhero_man: Features
+## :superhero_man: Features
 
 #### Current planned features
 
