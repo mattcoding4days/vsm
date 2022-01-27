@@ -46,6 +46,7 @@ class Config(metaclass=ThreadSafeMeta):
     """
     __version: str = "0.1.0"
     __package: str = __package__
+    __executable: str = "vsm"
     __base_dir: Path = Path(__file__).resolve(strict=True).parent.parent.parent
     __config_dir: Path = Path.home() / ".config" / __package
     __vsm_env_var: str = "VIM_SESSIONS"
@@ -64,6 +65,13 @@ class Config(metaclass=ThreadSafeMeta):
         @description: getter for package name
         """
         return cls.__package
+
+    @classmethod
+    def executable(cls) -> str:
+        """
+        @description: getter for executable name
+        """
+        return cls.__executable
 
     @classmethod
     def base_dir(cls) -> Path:

@@ -65,7 +65,7 @@ def main() -> int:
                 return 1
     else:
         Log.error(
-            f"No arguments given, please use `{Config.package()} --help` for usage information")
+            f"No arguments given, please use `{Config.executable()} --help` for usage information")
         return 1
 
     return 0
