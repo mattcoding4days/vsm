@@ -26,7 +26,66 @@
   * [x] Open session by name (regex filtered)
   * [x] Remove session by name (regex filtered)
   * [x] List all sessions
-  * [ ] Show programmer statistics for each session
+  * [ ] Show programmer statistics for each session when listed
+
+#### Current planned packaging 
+
+  * [x] Build and install manually with poetry
+  * [ ] Pip install from pypi
+  * [ ] Install from AUR or clone and build with makepkg (Arch Users)
+
+## Installing
+
+> NOTE that the environment variable `VIM_SESSIONS` is expected on the system,
+> if it is not defined `vsm` will default to $HOME/.config/vim_sessions when it looks
+> for your session files.
+
+1. Clone the repo and build the package manually (Poetry must be installed)
+
+```bash
+# NOTE: if you are installing poetry, DO NOT install it with pip
+curl -sSL https://install.python-poetry.org | python3 -
+
+# clone
+git@github.com:mattcoding4days/vsm.git
+
+# navigate into the directory
+cd vsm/
+
+# install and build
+poetry install && poetry build
+
+# navigate into the newly created dist diretory
+cd dist/
+
+# pip install the tar package
+pip install vim_session_manager-0.1.0.tar.gz --user
+
+# you should now be able to use the program
+vsm --help
+```
+
+2. Pip install (to be completed)
+`pip install vsm`
+
+3. Install from Arch User Repository
+`paru -S vim_session_manager`
+
+4. Clone and makepkg
+
+```bash
+# clone
+git@github.com:mattcoding4days/vsm.git
+
+# navigate into the directory
+cd vsm/
+
+# make the package
+makepkg -cf
+
+# you should now be able to use the program
+vsm --help
+```
 
 ## :construction_worker: Development (for the contribution driven opensourcerer)
 
