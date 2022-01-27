@@ -67,7 +67,7 @@ vsm --help
 
 2. Pip install (Not available)
 
-`pip install vsm`
+`pip install vim_session_manager`
 
 3. Install from Arch User Repository (Not available)
 
@@ -107,13 +107,7 @@ vsm --help
 
 #### You can pass command line arguments to executable through poetry
 
-1. `poetry run drive --help`
-
-2. `poetry run drive --open-session <session>`
-
-3. `poetry run drive --remove-session <session>`
-
-4. `poetry run drive --list-session`
+`poetry run vsm --help`
 
 ## :package: 3rd party libraries
 
