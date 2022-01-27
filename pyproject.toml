@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "vsm"
+name = "vim_session_manager"
 version = "0.1.0"
-description = "Poetry project set up and ready to go"
+description = "A small python program for managing vim sessions"
 authors = ["Matt Williams <matt.k.williams@protonmail.me>"]
 
 [tool.poetry.dependencies]
@@ -19,7 +19,7 @@ pylint = "^2.7.2"
 autopep8 = "^1.6.0"
 
 [tool.poetry.scripts]
-drive = "vsm.__main__:main"
+drive = "vim_session_manager.__main__:main"
 tests = "scripts.project_helper:run_tests"
 stubs = "scripts.project_helper:stub_gen"
 analyze = "scripts.project_helper:run_analyzer"

@@ -8,8 +8,8 @@ import subprocess as sp
 from pathlib import Path
 
 # package
-from vsm import Config
-from vsm.log import Log
+from vim_session_manager import Config
+from vim_session_manager.log import Log
 
 # 3rd party
 from result import Ok, Err, Result

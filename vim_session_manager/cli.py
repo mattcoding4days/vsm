@@ -4,7 +4,7 @@ argparse wrapper
 
 import argparse
 
-from vsm import ThreadSafeMeta
+from vim_session_manager import ThreadSafeMeta
 
 
 class Cli(metaclass=ThreadSafeMeta):

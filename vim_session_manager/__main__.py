@@ -7,11 +7,11 @@ import sys
 from pathlib import Path
 
 # package
-from vsm import Config
-from vsm.session_manager import VimSessionManager
-from vsm.utils import ShellManager
-from vsm.cli import Cli
-from vsm.log import Log
+from vim_session_manager import Config
+from vim_session_manager.manager import VimSessionManager
+from vim_session_manager.utils import ShellManager
+from vim_session_manager.cli import Cli
+from vim_session_manager.log import Log
 
 # 3rd party
 from result import Ok, Err

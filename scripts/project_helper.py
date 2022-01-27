@@ -5,7 +5,7 @@ pyproject.toml
 import subprocess as sp
 import sys
 
-from vsm import Config
+from vim_session_manager import Config
 
 
 def stub_gen() -> None:

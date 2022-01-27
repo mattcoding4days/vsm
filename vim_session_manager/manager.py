@@ -7,9 +7,9 @@ from typing import List
 import re
 
 # package
-from vsm import ThreadSafeMeta
-from vsm.utils import EnvironmentManager
-from vsm.log import Log
+from vim_session_manager import ThreadSafeMeta
+from vim_session_manager.utils import EnvironmentManager
+from vim_session_manager.log import Log
 
 # 3rd party
 from result import Ok, Err, Result

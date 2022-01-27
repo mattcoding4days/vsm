@@ -16,7 +16,7 @@ correctly
 import pytest
 
 # package
-import vsm
+import vim_session_manager as vsm
 
 # noinspection PyCallByClass
 
