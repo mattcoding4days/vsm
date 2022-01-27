@@ -65,13 +65,15 @@ pip install vim_session_manager-0.1.0.tar.gz --user
 vsm --help
 ```
 
-2. Pip install (to be completed)
+2. Pip install (Not available)
+
 `pip install vsm`
 
-3. Install from Arch User Repository
+3. Install from Arch User Repository (Not available)
+
 `paru -S vim_session_manager`
 
-4. Clone and makepkg
+4. Clone and makepkg (Not available)
 
 ```bash
 # clone
@@ -98,10 +100,10 @@ vsm --help
 `poetry install`
 
 #### Run the tests to verify everything worked
-`poetry run tests`
+`pytest`
 
 #### Run the executable
-`poetry run drive`
+`poetry run vsm`
 
 #### You can pass command line arguments to executable through poetry
 
