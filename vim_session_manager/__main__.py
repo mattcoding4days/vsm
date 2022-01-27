@@ -9,7 +9,7 @@ from pathlib import Path
 # package
 from vim_session_manager import Config
 from vim_session_manager.manager import VimSessionManager
-from vim_session_manager.utils import ShellManager
+from vim_session_manager.utils import Shell
 from vim_session_manager.cli import Cli
 from vim_session_manager.log import Log
 
@@ -23,7 +23,7 @@ def main() -> int:
 
     @retuns: exit status
     """
-    shell = ShellManager()
+    shell = Shell()
     # preflight checks
     # TODO: Linux should be checked as os, distro information could be stored,
     # and vim variants checked for existence in an Initializer class, possible feature flag

@@ -8,7 +8,7 @@ import re
 
 # package
 from vim_session_manager import ThreadSafeMeta
-from vim_session_manager.utils import EnvironmentManager
+from vim_session_manager.utils import Environment
 from vim_session_manager.log import Log
 
 # 3rd party
@@ -21,7 +21,7 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
     """
 
     def __init__(self):
-        self.__sessions_dir: Path = EnvironmentManager().get_sessions_directory()
+        self.__sessions_dir: Path = Environment().get_sessions_directory()
         self.__all_sessions: List[Path] = self.__load_sessions()
 
     def __load_sessions(self) -> List[Path]:

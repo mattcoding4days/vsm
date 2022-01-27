@@ -15,7 +15,7 @@ from vim_session_manager.log import Log
 from result import Ok, Err, Result
 
 
-class EnvironmentManager:
+class Environment:
     """
     @description: A wrapper around any environment specific code
     """
@@ -49,7 +49,7 @@ class EnvironmentManager:
         return session_dir
 
 
-class ShellManager:
+class Shell:
     """
     @description: A wrapper around subprocess
     """
