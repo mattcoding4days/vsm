@@ -63,10 +63,6 @@ def main() -> int:
             case Err(e):
                 Log.error(e)
                 return 1
-
-    elif cli.args.the_current_state_of_things:
-        Log.warn(f"This feature is currently under development")
-
     else:
         Log.error(
             f"No arguments given, please use `{Config.package()} --help` for usage information")

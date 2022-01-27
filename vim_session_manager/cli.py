@@ -25,9 +25,6 @@ class Cli(metaclass=ThreadSafeMeta):
                             help="remove a vim session file by name", type=str)
         parser.add_argument("-o", "--open-session",
                             help="open a vim session file by name", type=str)
-        parser.add_argument(
-            "--the-current-state-of-things", help="show information about the current state of things", action="store_true")
-
         self.__args = parser.parse_args()
 
     @property

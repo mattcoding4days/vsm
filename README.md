@@ -52,7 +52,7 @@
 
 3. `poetry run drive --remove-session <session>`
 
-4. `poetry run drive --the-current-state-of-things`
+4. `poetry run drive --list-session`
 
 ## :package: 3rd party libraries
 
@@ -67,7 +67,6 @@
 ## :scroll: Documentation
 
 > To be completed
-
 
 ## :mage: Contributing
 

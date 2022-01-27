@@ -121,14 +121,3 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         @return Result[Ok(Path), Err(str)]
         """
         return self.__fetch(session)
-
-    def the_current_state_of_things(self) -> None:
-        """
-        @description: called when used passes the --the_current_state_of_things
-        """
-        # TODO: This could be quite a robust feature, show information about vsm,
-        # version, user name, distro type/name. Show statistical information about vim session files,
-        # like how long the user had the file open (how long they were working on the project), last time
-        # the file was opened etcetra. This could be shown in a pretty tabluar colored format using the rich python library.
-        # Feature flag
-        ...
