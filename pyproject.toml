@@ -22,6 +22,7 @@ autopep8 = "^1.6.0"
 vsm = "vim_session_manager.__main__:main"
 
 [build-system]
+requires = ["poetry"]
 requires = ["poetry-core>=1.0.0"]
 
 build-backend = "poetry.core.masonry.api"

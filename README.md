@@ -43,23 +43,8 @@
 1. Clone the repo and build the package manually (Poetry must be installed)
 
 ```bash
-# NOTE: if you are installing poetry, DO NOT install it with pip
-curl -sSL https://install.python-poetry.org | python3 -
-
-# clone
-git@github.com:mattcoding4days/vsm.git
-
-# navigate into the directory
-cd vsm/
-
-# install and build
-poetry install && poetry build
-
-# navigate into the newly created dist diretory
-cd dist/
-
-# pip install the tar package
-pip install vim_session_manager-0.1.0.tar.gz --user
+# This is the fast way
+pip install git+https://github.com/mattcoding4days/vsm.git#egg=vim_session_manager --user
 
 # you should now be able to use the program
 vsm --help
@@ -95,6 +80,9 @@ vsm --help
 > Note: mypy static analyzing currently will not work as it does not yet support the match statement
 
 ### :keyboard: Commands to help you out
+
+> NOTE: if you are installing poetry, DO NOT install it with pip
+> `curl -sSL https://install.python-poetry.org | python3 -`
 
 #### Install the package
 `poetry install`
