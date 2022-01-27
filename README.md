@@ -37,12 +37,12 @@
 ## Installing
 
 > NOTE that the environment variable `VIM_SESSIONS` is expected on the system,
-> if it is not defined `vsm` will default to $HOME/.config/vim_sessions when it looks
+> if it is not defined `vsm` will default to `~/.config/vim_sessions` when it looks
 > for your session files.
 
 * bash/zsh `export VIM_SESSIONS="path/to/where/you/want/to/store/your/sessions"`
 
-* fish `set -Ux VIM_SESSIONS="path/to/where/you/want/to/store/your/sessions"`
+* fish `set -Ux VIM_SESSIONS "path/to/where/you/want/to/store/your/sessions"`
 
 
 1. Clone the repo and build the package manually 
