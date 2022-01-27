@@ -40,7 +40,12 @@
 > if it is not defined `vsm` will default to $HOME/.config/vim_sessions when it looks
 > for your session files.
 
-1. Clone the repo and build the package manually (Poetry must be installed)
+* bash/zsh `export VIM_SESSIONS="path/to/where/you/want/to/store/your/sessions"`
+
+* fish `set -Ux VIM_SESSIONS="path/to/where/you/want/to/store/your/sessions"`
+
+
+1. Clone the repo and build the package manually 
 
 ```bash
 # This is the fast way
@@ -50,7 +55,7 @@ pip install git+https://github.com/mattcoding4days/vsm.git#egg=vim_session_manag
 vsm --help
 ```
 
-2. Pip install (Not available)
+2. Pip install from Pypi (Not available)
 
 `pip install vim_session_manager`
 
