@@ -5,6 +5,9 @@ from pathlib import Path
 from threading import Lock
 from typing import Any, Dict
 
+EXIT_SUCCESS = 0
+EXIT_FAILURE = 1
+
 
 class ThreadSafeMeta(type):
     """

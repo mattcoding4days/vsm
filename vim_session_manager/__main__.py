@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 # package
-from vim_session_manager import Config
+from vim_session_manager import Config, EXIT_FAILURE, EXIT_SUCCESS
 from vim_session_manager.manager import VimSessionManager
 from vim_session_manager.utils import Shell
 from vim_session_manager.cli import Cli
@@ -21,7 +21,7 @@ def main() -> int:
     """
     @description: main program logic
 
-    @retuns: exit status
+    @returns: exit status
     """
     shell = Shell()
     # preflight checks
@@ -29,7 +29,7 @@ def main() -> int:
     # and vim variants checked for existence in an Initializer class, possible feature flag
     if not shell.is_installed("nvim") and not shell.is_installed("vim"):
         Log.error("No variant of vim was found on your system")
-        return 1
+        return EXIT_FAILURE
 
     cli = Cli()
     vsm = VimSessionManager()
@@ -46,7 +46,7 @@ def main() -> int:
                 Log.info("Done..")
             case Err(e):
                 Log.error(e)
-                return 1
+                return EXIT_FAILURE
 
     elif cli.args.open_session:
         session = Path(cli.args.open_session)
@@ -62,13 +62,13 @@ def main() -> int:
                         return 1
             case Err(e):
                 Log.error(e)
-                return 1
+                return EXIT_FAILURE
     else:
         Log.error(
             f"No arguments given, please use `{Config.executable()} --help` for usage information")
-        return 1
+        return EXIT_FAILURE
 
-    return 0
+    return EXIT_SUCCESS
 
 
 if __name__ == "__main__":
