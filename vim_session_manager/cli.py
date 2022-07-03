@@ -16,9 +16,9 @@ class Cli(metaclass=ThreadSafeMeta):
 
     def __init__(self):
         parser = argparse.ArgumentParser(
-            prog=f"{Config.executable()} {Config.version()}",
+            prog=f"{Config.executable()}",
             usage="%(prog)s [options]",
-            description="""A small python program for easily loading/viewing and removing vim sessions
+            description=f"""vsm v{Config.version()} is a small python program for easily loading/viewing and removing vim sessions
                                         as well as listing programmer statistics""",
             allow_abbrev=False,
         )

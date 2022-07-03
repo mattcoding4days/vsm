@@ -18,7 +18,7 @@ from progress.spinner import PixelSpinner
 
 class VimSessionManager(metaclass=ThreadSafeMeta):
     """
-    Implements all functionality of other classes, to orchestrate the program
+    @description Implements all functionality of other classes, to orchestrate the program
     """
 
     def __init__(self):
@@ -90,7 +90,7 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         matches: List[Path] = self.__match_session(session)
         return self.__validate_one(matches, session)
 
-    def list_sessions(self) -> None:
+    def list_sessions(self):
         """
         @description: called when used passes the -l command line parameter,
         prints out all session files
