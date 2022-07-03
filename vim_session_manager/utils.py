@@ -8,7 +8,7 @@ import subprocess as sp
 from pathlib import Path
 
 # package
-from vim_session_manager import Config
+from vim_session_manager import Config, VIM_VARIENTS
 from vim_session_manager.log import Log
 
 # 3rd party
@@ -87,3 +87,26 @@ class Shell:
             return False
 
         return True
+
+
+class VimVariant:
+    """
+    @description Helper class to discover if any variant of
+    vim is installed on the system, Note that the vim install
+    must be in the users $PATH variable
+    """
+
+    def __init__(self, shell: Shell):
+        # NOTE: if the user has multiple vim variants installed on the
+        # system, the first on in the list will be used. This really isn't
+        # ideal.
+        # TODO: There needs to be a way for the user to select the variant they want
+        # on first run, then cache that selection to a file for future use
+        self.__vim_executable = ""
+        for variant in VIM_VARIENTS:
+            if shell.is_installed(variant):
+                self.__vim_executable = variant
+
+    @property
+    def vim_executable(self) -> str:
+        return self.__vim_executable

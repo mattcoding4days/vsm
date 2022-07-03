@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "vim_session_manager"
-version = "0.1.0"
+version = "0.1.1"
 description = "A small python program for managing vim sessions"
 authors = ["Matt Williams <matt.k.williams@protonmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10.1"
 rich = "^11.0.0"
-halo = "^0.0.31"
 result = "^0.7.0"
+progress = "^1.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

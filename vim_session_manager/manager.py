@@ -13,6 +13,7 @@ from vim_session_manager.log import Log
 
 # 3rd party
 from result import Ok, Err, Result
+from progress.spinner import PixelSpinner
 
 
 class VimSessionManager(metaclass=ThreadSafeMeta):
@@ -30,11 +31,14 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         @returns a list of Path objects
         """
         sessions: List[Path] = []
+        spinner = PixelSpinner('Loading ')
         for session in self.__sessions_dir.iterdir():
             # filter the files by file extension
             if session.suffix == ".vim":
                 sessions.append(session)
+            spinner.next()
 
+        spinner.finish()
         return sessions
 
     def __match_session(self, source: Path) -> List[Path]:
@@ -46,6 +50,7 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         @return: list of matched sessions
         """
         matches: List[Path] = []
+
         for session in self.__all_sessions:
             pattern = re.compile(source.stem)
             if pattern.match(session.stem):

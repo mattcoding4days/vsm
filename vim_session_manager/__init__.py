@@ -3,15 +3,19 @@ Package wide configurations
 """
 from pathlib import Path
 from threading import Lock
-from typing import Any, Dict
+from typing import Any, Dict, List
 
-EXIT_SUCCESS = 0
-EXIT_FAILURE = 1
+EXIT_SUCCESS: int = 0
+EXIT_FAILURE: int = 1
+
+# TODO: There are many different variations of vim, they need all
+# need to be added to this list
+VIM_VARIENTS: List[str] = ['nvim', 'vim']
 
 
 class ThreadSafeMeta(type):
     """
-    This is a thread-safe implementation of Singleton.
+    @description This is a thread-safe implementation of a Singleton.
     """
     _instances: Dict[Any, Any] = {}
 
@@ -19,7 +23,7 @@ class ThreadSafeMeta(type):
 
     def __call__(cls, *args, **kwargs):
         """
-        Possible changes to the value of the `__init__` argument do not affect
+        @description Possible changes to the value of the `__init__` argument do not affect
         the returned instance.
         """
         # Now, imagine that the program has just been launched. Since there's
@@ -43,12 +47,12 @@ class ThreadSafeMeta(type):
 class Config(metaclass=ThreadSafeMeta):
     """
     @description: Global program configuration, uses the dotenv package
-     to load runtime configuration from a .env file, once and
-     only once into this object, this object can be used through-out
-     the code base
+    to load runtime configuration from a .env file, once and
+    only once into this object, this object can be used through-out
+    the code base
     """
-    __version: str = "0.1.0"
     __package: str = __package__
+    __version: str = "0.1.1"
     __executable: str = "vsm"
     __base_dir: Path = Path(__file__).resolve(strict=True).parent.parent.parent
     __config_dir: Path = Path.home() / ".config" / __package
@@ -56,18 +60,18 @@ class Config(metaclass=ThreadSafeMeta):
     __default_sessions_directory: Path = Path.home() / ".config" / "vim_sessions"
 
     @classmethod
-    def version(cls) -> str:
-        """
-        @description: getter for version of package
-        """
-        return cls.__version
-
-    @classmethod
     def package(cls) -> str:
         """
         @description: getter for package name
         """
         return cls.__package
+
+    @classmethod
+    def version(cls) -> str:
+        """
+        @description: getter for version of package
+        """
+        return cls.__version
 
     @classmethod
     def executable(cls) -> str:

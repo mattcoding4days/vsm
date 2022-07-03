@@ -108,7 +108,7 @@ vsm --help
 
 1. [result for Rust like elegance](https://github.com/rustedpy/result)
 
-2. [halo fancy spinner library](https://github.com/manrajgrover/halo)
+2. [progress](https://pypi.org/project/progress/)
 
 3. [rich, make terminal programs great again](https://github.com/Textualize/rich)
 
