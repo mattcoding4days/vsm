@@ -32,26 +32,16 @@
 
 #### Current planned packaging 
 
-  * [x] Build and install manually with poetry
   * [x] Pip install from this repo
+  * [x] Build and install manually with poetry
   * [ ] Pip install from pypi
-  * [ ] Install from AUR or clone and build with makepkg (Arch Users)
 
 ## Installing
 
-> NOTE that the environment variable `VIM_SESSIONS` is expected on the system,
-> if it is not defined `vsm` will default to `~/.config/vim_sessions` when it looks
-> for your session files.
-
-* bash/zsh `export VIM_SESSIONS="path/to/where/you/want/to/store/your/sessions"`
-
-* fish `set -Ux VIM_SESSIONS "path/to/where/you/want/to/store/your/sessions"`
-
-
-1. Clone the repo and build the package manually 
+1. Pip Installing from git
 
 ```bash
-# This is the fast way
+# Copy and run this command
 pip install git+https://github.com/mattcoding4days/vsm.git#egg=vim_session_manager --user
 
 # you should now be able to use the program
@@ -61,26 +51,6 @@ vsm --help
 2. Pip install from Pypi (Not available)
 
 `pip install vim_session_manager`
-
-3. Install from Arch User Repository (Not available)
-
-`paru -S vim_session_manager`
-
-4. Clone and makepkg (Not available)
-
-```bash
-# clone
-git@github.com:mattcoding4days/vsm.git
-
-# navigate into the directory
-cd vsm/
-
-# make the package
-makepkg -cf
-
-# you should now be able to use the program
-vsm --help
-```
 
 ## :mage: Usage
 
