@@ -32,6 +32,7 @@
 #### Current planned packaging 
 
   * [x] Build and install manually with poetry
+  * [x] Pip install from this repo
   * [ ] Pip install from pypi
   * [ ] Install from AUR or clone and build with makepkg (Arch Users)
 
@@ -80,7 +81,7 @@ makepkg -cf
 vsm --help
 ```
 
-## Usage
+## :mage: Usage
 
 <div align="center">
   <h3>Exploring the help menu for subcommands</h3>
