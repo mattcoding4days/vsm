@@ -41,6 +41,7 @@
 1. Install from pypi
 
 > [Check it out on Pypi](https://pypi.org/project/vim-session-manager/#description)
+
 `pip install vim-session-manager`
 
 2. Pip Installing from the git repo
@@ -48,12 +49,7 @@
 ```bash
 # Copy and run this command
 pip install git+https://github.com/mattcoding4days/vsm.git#egg=vim_session_manager --user
-
-# you should now be able to use the program
-vsm --help
 ```
-
-`pip install vim_session_manager`
 
 ## :mage: Usage
 
