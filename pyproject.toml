@@ -9,6 +9,7 @@ python = "^3.10.1"
 rich = "^11.0.0"
 result = "^0.7.0"
 progress = "^1.6"
+inquirer = "^2.9.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

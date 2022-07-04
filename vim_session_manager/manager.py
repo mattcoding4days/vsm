@@ -8,21 +8,22 @@ import re
 
 # package
 from vim_session_manager import ThreadSafeMeta
-from vim_session_manager.utils import Environment
 from vim_session_manager.log import Log
+from vim_session_manager.prompt import PromptSingleSelection, PromptMultiSelection
 
 # 3rd party
 from result import Ok, Err, Result
-from progress.spinner import PixelSpinner
 
 
 class VimSessionManager(metaclass=ThreadSafeMeta):
     """
     @description Implements all functionality of other classes, to orchestrate the program
+
+    @path sessions_dir absolute path to session file directory
     """
 
-    def __init__(self):
-        self.__sessions_dir: Path = Environment().get_sessions_directory()
+    def __init__(self, sessions_dir: Path):
+        self.__sessions_dir = sessions_dir
         self.__all_sessions: List[Path] = self.__load_sessions()
 
     def __load_sessions(self) -> List[Path]:
@@ -31,14 +32,11 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
         @returns a list of Path objects
         """
         sessions: List[Path] = []
-        spinner = PixelSpinner('Loading ')
         for session in self.__sessions_dir.iterdir():
             # filter the files by file extension
             if session.suffix == ".vim":
                 sessions.append(session)
-            spinner.next()
 
-        spinner.finish()
         return sessions
 
     def __match_session(self, source: Path) -> List[Path]:
@@ -105,7 +103,7 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
             for session in self.__all_sessions:
                 Log.info(session.stem)
 
-    def remove_session(self, session: Path) -> Result[Path, str]:
+    def remove_session(self, session: Path | None) -> Result[Path, str] | Result[List[Path], str]:
         """
         @description: called when used passes the -r command line parameter,
         removes the session file if it exists
@@ -114,9 +112,29 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
 
         @return Result[Ok(Path), Err(str)]
         """
-        return self.__fetch(session)
+        if session:
+            return self.__fetch(session)
 
-    def open_session(self, session: Path) -> Result[Path, str]:
+        stem_sessions: List[str] = []
+        for session in self.__all_sessions:
+            stem_sessions.append(session.stem)
+
+        prompt = PromptMultiSelection(
+            "Select all sessions you would like to remove", stem_sessions)
+        prompt.show_prompt()
+        selection = prompt.selection()
+        if not selection:
+            return Err("No sessions were selected for removal")
+
+        matched_sessions: List[Path] = []
+        for session in self.__all_sessions:
+            for selected in selection:
+                if session.stem == selected:
+                    matched_sessions.append(session)
+
+        return Ok(matched_sessions)
+
+    def open_session(self, session: Path | None) -> Result[Path, str]:
         """
         @description: called when used passes the -o command line parameter,
         opens the specified session file, if it exists
@@ -125,4 +143,20 @@ class VimSessionManager(metaclass=ThreadSafeMeta):
 
         @return Result[Ok(Path), Err(str)]
         """
-        return self.__fetch(session)
+        if session:
+            return self.__fetch(session)
+
+        stem_sessions: List[str] = []
+        for session in self.__all_sessions:
+            stem_sessions.append(session.stem)
+
+        prompt = PromptSingleSelection(
+            "Which session would you like to load?", stem_sessions)
+        prompt.show_prompt()
+        selection = prompt.selection()
+
+        for session in self.__all_sessions:
+            if session.stem == selection:
+                return Ok(session)
+
+        return Err("Session could not be loaded")

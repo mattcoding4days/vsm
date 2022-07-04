@@ -9,8 +9,8 @@ from pathlib import Path
 # package
 from vim_session_manager import Config, EXIT_FAILURE, EXIT_SUCCESS
 from vim_session_manager.manager import VimSessionManager
-from vim_session_manager.utils import Shell, VimVariant
-from vim_session_manager.cli import Cli
+from vim_session_manager.utils import Shell, VimVariant, FileSystem
+from vim_session_manager.cli import Cli, SubCommand
 from vim_session_manager.log import Log
 
 # 3rd party
@@ -26,7 +26,7 @@ def list_sessions(vsm: VimSessionManager) -> int:
     return EXIT_SUCCESS
 
 
-def remove_session(vsm: VimSessionManager, session: Path) -> int:
+def remove_session(vsm: VimSessionManager, session: Path | None) -> int:
     """
     @param vsm, an instance of a VimSessionManager object
     @param session, absolute path to the session file
@@ -34,9 +34,14 @@ def remove_session(vsm: VimSessionManager, session: Path) -> int:
     """
     match vsm.remove_session(session):
         case Ok(value):
-            Log.warn(f"Removing session -> {value}")
-            # TODO: use a yes/no prompt to verify the user doesn't remove a file by accident
-            value.unlink()
+            if type(value) is list:
+                for s in value:
+                    Log.warn(f"Removing session -> {s}")
+                    s.unlink()
+            else:
+                Log.warn(f"Removing session -> {value}")
+                value.unlink()  # TODO ignore this linting error
+
             Log.info("Done..")
         case Err(e):
             Log.error(e)
@@ -45,7 +50,7 @@ def remove_session(vsm: VimSessionManager, session: Path) -> int:
     return EXIT_SUCCESS
 
 
-def open_session(vsm: VimSessionManager, session: Path, shell: Shell, vim_executable: str) -> int:
+def open_session(vsm: VimSessionManager, session: Path | None, shell: Shell, vim_executable: str) -> int:
     """
     @param vsm, an instance of a VimSessionManager object
     @param session, absolute path to the session file
@@ -75,29 +80,44 @@ def main() -> int:
     """
     # preflight checks
     # TODO: Nix should be checked as os, distro information could be stored,
-    shell = Shell()
-    vim = VimVariant(shell)
-    if not vim.vim_executable:
-        Log.error("No variant of vim was found on your system")
-        return EXIT_FAILURE
-
-    cli = Cli()
-
     exit_code = int()
-    if cli.args.list_sessions:
-        exit_code = list_sessions(VimSessionManager())
+    try:
+        shell = Shell()
+        fs = FileSystem(Config.config_dir(), Config.cache_dir(),
+                        Config.vim_variant_file(), Config.vsm_env_var(), Config.default_sessions_directory())
+        vim = VimVariant(shell, fs)
+        if not vim.vim_executable:
+            Log.error("No variant of vim was found on your system")
+            return EXIT_FAILURE
 
-    elif cli.args.remove_session:
-        exit_code = remove_session(
-            VimSessionManager(), Path(cli.args.remove_session))
+        cli = Cli()
+        session: Path | None = None
+        match cli.active_command:
+            case SubCommand.LIST:
+                exit_code = list_sessions(
+                    VimSessionManager(fs.sessions_directory()))
 
-    elif cli.args.open_session:
-        exit_code = open_session(
-            VimSessionManager(), Path(cli.args.open_session), shell, vim.vim_executable)
+            case SubCommand.REMOVE:
+                if cli.args.name:
+                    session = Path(cli.args.name)
 
-    else:
-        Log.error(
-            f"No arguments given, please use `{Config.executable()} --help` for usage information")
+                exit_code = remove_session(
+                    VimSessionManager(fs.sessions_directory()), session)
+
+            case SubCommand.OPEN:
+                if cli.args.name:
+                    session = Path(cli.args.name)
+
+                exit_code = open_session(
+                    VimSessionManager(fs.sessions_directory()), session, shell, vim.vim_executable)
+
+            case _:
+                Log.error(
+                    f"No arguments given, please use `{Config.executable()} --help` for usage information")
+                exit_code = EXIT_FAILURE
+
+    except KeyboardInterrupt:
+        Log.warn("Request cancelled")
         exit_code = EXIT_FAILURE
 
     return exit_code

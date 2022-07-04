@@ -10,7 +10,7 @@ EXIT_FAILURE: int = 1
 
 # TODO: There are many different variations of vim, they need all
 # need to be added to this list
-VIM_VARIENTS: List[str] = ['nvim', 'vim']
+VIM_VARIENTS: List[str] = ['nvim', 'vim', 'gvim']
 
 
 class ThreadSafeMeta(type):
@@ -56,6 +56,8 @@ class Config(metaclass=ThreadSafeMeta):
     __executable: str = "vsm"
     __base_dir: Path = Path(__file__).resolve(strict=True).parent.parent.parent
     __config_dir: Path = Path.home() / ".config" / __package
+    __cache_dir: Path = Path.home() / ".cache" / __package
+    __vim_variant_file: Path = __config_dir / 'vim_variant.json'
     __vsm_env_var: str = "VIM_SESSIONS"
     __default_sessions_directory: Path = Path.home() / ".config" / "vim_sessions"
 
@@ -90,9 +92,23 @@ class Config(metaclass=ThreadSafeMeta):
     @classmethod
     def config_dir(cls) -> Path:
         """
-        @description: getter for the session dir
+        @description: getter for the configuration directory
         """
         return cls.__config_dir
+
+    @classmethod
+    def cache_dir(cls) -> Path:
+        """
+        @description: getter for the cacheing directory
+        """
+        return cls.__cache_dir
+
+    @classmethod
+    def vim_variant_file(cls) -> Path:
+        """
+        @description: getter for the vim variant file location
+        """
+        return cls.__vim_variant_file
 
     @classmethod
     def vsm_env_var(cls) -> str:
