@@ -201,7 +201,7 @@ class VimVariant:
 
                 if len(self.__vim_executables) > 1:
                     prompt = PromptSingleSelection(
-                        "Multiple vim variants found on the system, please make a selection", self.__vim_executables)
+                        "Which vim variant do you want to use?", self.__vim_executables)
                     prompt.show_prompt()
                     self.__vim_executable = prompt.selection()
                     if self.__vim_executable:
