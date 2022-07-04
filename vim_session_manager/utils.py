@@ -10,7 +10,7 @@ from typing import List
 import json
 
 # package
-from vim_session_manager import Config, VIM_VARIENTS, ThreadSafeMeta
+from vim_session_manager import VIM_VARIENTS, ThreadSafeMeta
 from vim_session_manager.log import Log
 from vim_session_manager.prompt import PromptSingleSelection
 

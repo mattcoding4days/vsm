@@ -7,6 +7,7 @@ from typing import List, Any
 
 # 3rd party
 import inquirer
+from inquirer.themes import GreenPassion
 
 
 class IPrompt(metaclass=abc.ABCMeta):
@@ -48,7 +49,7 @@ class PromptSingleSelection(IPrompt):
         @raise KeyboardInterrupt if user ctrl+c
         """
         self.__selection = inquirer.prompt(
-            self.inquirer_list, raise_keyboard_interrupt=True)
+            self.inquirer_list, theme=GreenPassion(), raise_keyboard_interrupt=True)
 
     def selection(self) -> str | None:
         """
@@ -72,7 +73,7 @@ class PromptMultiSelection(IPrompt):
         @raise KeyboardInterrupt if user ctrl+c
         """
         self.__selection = inquirer.prompt(
-            self.inquirer_list, raise_keyboard_interrupt=True)
+            self.inquirer_list, theme=GreenPassion(), raise_keyboard_interrupt=True)
 
     def selection(self) -> List[str] | None:
         """
