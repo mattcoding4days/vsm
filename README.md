@@ -82,7 +82,11 @@ vsm --help
 
 ## Usage
 
-
+<div align="center">
+  <h1>Exploring the help menu for subcommands</h1>
+  <img width="1300" height="700" src="assets/vsm_help.gif">
+  <br>
+</div>
 
 ## :construction_worker: Development (for the contribution driven opensourcerer)
 
@@ -118,9 +122,5 @@ vsm --help
 3. [rich, make terminal programs great again](https://github.com/Textualize/rich)
 
 ## :scroll: Documentation
-
-> To be completed
-
-## :mage: Contributing
 
 > To be completed
