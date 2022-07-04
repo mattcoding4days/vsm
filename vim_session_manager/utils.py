@@ -216,7 +216,7 @@ class VimVariant:
         # TODO: this if is only here to stop pyright warnings, need
         # to add the proper pyright ignore code
         if self.__vim_executable:
-            Log.info(f"saving selection to {fs.vim_variant_file}")
+            Log.warn(f"saving selection to {fs.vim_variant_file}")
             fs.write_vim_variant(self.__vim_executable)
 
     @property
