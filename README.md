@@ -25,7 +25,8 @@
   * [x] Open session by name (regex filtered)
   * [x] Remove session by name (regex filtered)
   * [x] List all sessions
-  * [x] Open and remove sessions from an interactive prompt
+  * [x] Open sessions from an interactive prompt
+  * [x] Batch session file removal from an interactive prompt
   * [x] Manages different vim variations (vim, nvim, gvim, macvim etc..)
   * [ ] Show programmer statistics for each session when listed
 
@@ -83,6 +84,31 @@ vsm --help
 
 ## :mage: Usage
 
+### Set up
+
+> NOTE that an environement variable `VIM_SESSIONS` is expected on the system,
+> if it is not defined `vsm` will default to `~/.config/vim_sessions` when it looks
+> for your session files.
+
+* bash/zsh `export VIM_SESSIONS="path/to/where/you/want/to/store/your/sessions"`
+
+* fish `set -Ux VIM_SESSIONS "path/to/where/you/want/to/store/your/sessions"`
+
+### Create session files easier
+
+> Add the below snippet to your `.vimrc` or `init.vim` to make creating
+> new session files much easier.
+
+```vim
+if isdirectory(expand($VIM_SESSIONS))
+  nnoremap mk :mksession $VIM_SESSIONS/
+  nnoremap mo :mksession! $VIM_SESSIONS/
+else
+  nnoremap mk :echo "VIM_SESSIONS directory does not exist, get vim session manager at https://github.com/mattcoding4days/vsm"<CR>
+  nnoremap mo :echo "VIM_SESSIONS directory does not exist, get vim session manager at https://github.com/mattcoding4days/vsm"<CR>
+endif
+```
+
 <div align="center">
   <h3>Exploring the help menu for subcommands</h3>
   <img width="800" height="300" src="assets/vsm_help.gif">
@@ -119,7 +145,7 @@ vsm --help
   <br>
 </div>
 
-## :construction_worker: Development (for the contribution driven opensourcerer)
+## :construction_worker: Development
 
 > The project is managed by [Python Poetry](https://python-poetry.org/) and uses python >= 3.10.1.
 > Note: mypy static analyzing currently will not work as it does not yet support the match statement
@@ -135,12 +161,10 @@ vsm --help
 #### Run the tests to verify everything worked
 `pytest`
 
-#### Run the executable
-`poetry run vsm`
+#### Start a poetry shell and run the executable
+`poetry shell`
+`vsm --help`
 
-#### You can pass command line arguments to executable through poetry
-
-`poetry run vsm --help`
 
 ## :package: 3rd party libraries
 
