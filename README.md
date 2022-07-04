@@ -88,6 +88,12 @@ vsm --help
   <br>
 </div>
 
+<div align="center">
+  <h3>Managing many variations of vim installed on the system</h3>
+  <img width="800" height="300" src="assets/vsm_vim_variant.gif">
+  <br>
+</div>
+
 ## :construction_worker: Development (for the contribution driven opensourcerer)
 
 > The project is managed by [Python Poetry](https://python-poetry.org/) and uses python >= 3.10.1.
