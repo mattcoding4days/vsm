@@ -105,6 +105,7 @@ endif
 
 <div align="center">
   <h3>Remove session file(s) interactively (one or many)</h3>
+  <p>Note that only the arrow keys are supported for movement, and the space bar is used to select/unselect</p>
   <img width="800" height="300" src="assets/vsm_remove_interactive.gif">
   <br>
 </div>
