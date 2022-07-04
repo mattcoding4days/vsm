@@ -94,6 +94,30 @@ vsm --help
   <br>
 </div>
 
+<div align="center">
+  <h3>Open a session file interactively</h3>
+  <img width="800" height="300" src="assets/vsm_open_interactive.gif">
+  <br>
+</div>
+
+<div align="center">
+  <h3>Open session file by name</h3>
+  <img width="800" height="300" src="assets/vsm_open_name.gif">
+  <br>
+</div>
+
+<div align="center">
+  <h3>Remove session file(s) interactively (one or many)</h3>
+  <img width="800" height="300" src="assets/vsm_remove_interactive.gif">
+  <br>
+</div>
+
+<div align="center">
+  <h3>Remove a single session file by name (with regex matching)</h3>
+  <img width="800" height="300" src="assets/vsm_remove_name.gif">
+  <br>
+</div>
+
 ## :construction_worker: Development (for the contribution driven opensourcerer)
 
 > The project is managed by [Python Poetry](https://python-poetry.org/) and uses python >= 3.10.1.
