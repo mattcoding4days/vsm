@@ -39,7 +39,7 @@ class IPrompt(metaclass=abc.ABCMeta):
 class PromptSingleSelection(IPrompt):
     def __init__(self, message: str, choices: List[str]):
         self.inquirer_list: List[inquirer.List] = [inquirer.List(
-            'index', message=message, choices=choices)]
+            'index', message=message, choices=choices, carousel=True)]
         self.__selection: dict[Any, Any] | None = None
 
     def show_prompt(self):
@@ -63,7 +63,7 @@ class PromptSingleSelection(IPrompt):
 class PromptMultiSelection(IPrompt):
     def __init__(self, message: str, choices: List[str]):
         self.inquirer_list: List[inquirer.Checkbox] = [inquirer.Checkbox(
-            'index', message=message, choices=choices)]
+            'index', message=message, choices=choices, carousel=True)]
         self.__selection: dict[Any, Any] | None = None
 
     def show_prompt(self):
