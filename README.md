@@ -34,11 +34,16 @@
 
   * [x] Pip install from this repo
   * [x] Build and install manually with poetry
-  * [ ] Pip install from pypi
+  * [x] Pip install from pypi
 
 ## Installing
 
-1. Pip Installing from git
+1. Install from pypi
+
+> [Check it out on Pypi](https://pypi.org/project/vim-session-manager/#description)
+`pip install vim-session-manager`
+
+2. Pip Installing from the git repo
 
 ```bash
 # Copy and run this command
@@ -47,8 +52,6 @@ pip install git+https://github.com/mattcoding4days/vsm.git#egg=vim_session_manag
 # you should now be able to use the program
 vsm --help
 ```
-
-2. Pip install from Pypi (Not available)
 
 `pip install vim_session_manager`
 
