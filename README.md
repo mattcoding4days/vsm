@@ -16,8 +16,7 @@
 > the `mksession` command in vim(neovim) can save you, thus saving the session to a directory, promising to return you to your
 > work exactly how you left it. However, the problem is most of us accrue many of these session files scattered about, personally
 > I have 28 vim session files, easily loading them, rememembering the context of each one, and removing stale sessions becomes a hassle.
-> enter `vsm` (Vim Session Manager), it is a script I wrote years ago that has been kicking about my dotfiles, and now is being revamped
-> and written as an easily installable python package as some of my compatriots have expressed interest in using it.
+> enter `vsm` (Vim Session Manager), it allows you to list, open, and remove sessions files, either interactively or by name.
 
 ## :superhero_man: Features
 
@@ -26,6 +25,8 @@
   * [x] Open session by name (regex filtered)
   * [x] Remove session by name (regex filtered)
   * [x] List all sessions
+  * [x] Open and remove sessions from an interactive prompt
+  * [x] Manages different vim variations (vim, nvim, gvim, macvim etc..)
   * [ ] Show programmer statistics for each session when listed
 
 #### Current planned packaging 
@@ -79,6 +80,10 @@ makepkg -cf
 vsm --help
 ```
 
+## Usage
+
+
+
 ## :construction_worker: Development (for the contribution driven opensourcerer)
 
 > The project is managed by [Python Poetry](https://python-poetry.org/) and uses python >= 3.10.1.
@@ -108,7 +113,7 @@ vsm --help
 
 1. [result for Rust like elegance](https://github.com/rustedpy/result)
 
-2. [progress](https://pypi.org/project/progress/)
+2. [inquirer for fancy prompt driven selection](https://pypi.org/project/inquirer/)
 
 3. [rich, make terminal programs great again](https://github.com/Textualize/rich)
 
