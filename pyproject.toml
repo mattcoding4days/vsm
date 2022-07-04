@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vim_session_manager"
-version = "0.1.2"
+version = "0.1.3"
 description = "A small python program for managing vim sessions"
 authors = ["Matt Williams <matt.k.williams@protonmail.com>"]
 license = "GPL-3.0-only"

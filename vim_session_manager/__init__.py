@@ -52,7 +52,7 @@ class Config(metaclass=ThreadSafeMeta):
     the code base
     """
     __package: str = __package__
-    __version: str = "0.1.2"
+    __version: str = "0.1.3"
     __executable: str = "vsm"
     __base_dir: Path = Path(__file__).resolve(strict=True).parent.parent.parent
     __config_dir: Path = Path.home() / ".config" / __package
