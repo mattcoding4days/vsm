@@ -84,7 +84,7 @@ vsm --help
 
 <div align="center">
   <h1>Exploring the help menu for subcommands</h1>
-  <img width="1300" height="700" src="assets/vsm_help.gif">
+  <img width="800" height="300" src="assets/vsm_help.gif">
   <br>
 </div>
 
